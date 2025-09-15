@@ -1,0 +1,39 @@
+{
+  "$id": "https://straub-analytics.github.io/stadium-events-data/schema/event.multi.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    { "$ref": "event.base.schema.json" },
+    {
+      "type": "object",
+      "required": ["entrants"],
+      "properties": {
+        "entrants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["competitor_id","name","position"],
+            "properties": {
+              "competitor_id": { "type": "string" },
+              "name": { "type": "string" },
+              "country": { "type": ["string","null"] },
+              "position": { "type": "integer" },
+              "is_winner": { "type": ["boolean","null"] },
+              "to_par": { "type": ["integer","null"] },
+              "rounds": {
+                "type": ["array","null"],
+                "items": { "type": "integer" }
+              },
+              "total_strokes": { "type": ["integer","null"] },
+              "laps": { "type": ["integer","null"] },
+              "finish_time_ms": { "type": ["integer","null"] },
+              "grid": { "type": ["integer","null"] },
+              "status": { "type": ["string","null"] }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

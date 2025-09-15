@@ -1,0 +1,31 @@
+{
+  "$id": "https://straub-analytics.github.io/stadium-events-data/schema/event.team.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    { "$ref": "event.base.schema.json" },
+    {
+      "type": "object",
+      "required": ["home_team_id","home_team_name","away_team_id","away_team_name"],
+      "properties": {
+        "home_team_id": { "type": "string" },
+        "home_team_name": { "type": "string" },
+        "home_score": { "type": ["integer","null"] },
+        "away_team_id": { "type": "string" },
+        "away_team_name": { "type": "string" },
+        "away_score": { "type": ["integer","null"] },
+        "winner_team_id": { "type": ["string","null"] },
+        "attendance": { "type": ["integer","null"] },
+        "weather": {
+          "type": "object",
+          "properties": {
+            "temp_f": { "type": ["number","null"] },
+            "wind_mph": { "type": ["number","null"] },
+            "note": { "type": ["string","null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

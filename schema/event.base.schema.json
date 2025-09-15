@@ -1,0 +1,37 @@
+{
+  "$id": "https://straub-analytics.github.io/stadium-events-data/schema/event.base.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "event_id","sport","season","status",
+    "date_local","start_time_local","timezone","start_time_utc",
+    "event_name","venue_id","venue_name","city","country",
+    "source_system","last_updated_utc","data_quality","schema_version"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "event_id": { "type": "string" },
+    "sport": { "type": "string" },
+    "league": { "type": ["string","null"] },
+    "season": { "type": "integer" },
+    "status": { "enum": ["scheduled","in_progress","final","postponed","canceled"] },
+    "date_local": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "start_time_local": { "type": "string" },
+    "timezone": { "type": "string" },
+    "start_time_utc": { "type": "string", "format": "date-time" },
+    "event_name": { "type": "string" },
+    "venue_id": { "type": "string" },
+    "venue_name": { "type": "string" },
+    "city": { "type": "string" },
+    "state": { "type": ["string","null"] },
+    "country": { "type": "string" },
+    "lat": { "type": ["number","null"] },
+    "lon": { "type": ["number","null"] },
+    "source_system": { "type": "string" },
+    "source_event_id": { "type": ["string","null"] },
+    "last_updated_utc": { "type": "string", "format": "date-time" },
+    "data_quality": { "enum": ["draft","verified"] },
+    "tags": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

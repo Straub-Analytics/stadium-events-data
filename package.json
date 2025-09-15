@@ -1,0 +1,13 @@
+{
+  "name": "stadium-events-data",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "ajv-cli": "^5.0.0"
+  },
+  "scripts": {
+    "validate:team": "npx ajv -s schema/event.team.schema.json -d events/**/*.jsonl --data=openapi",
+    "validate:multi": "npx ajv -s schema/event.multi.schema.json -d events/**/*.jsonl --data=openapi",
+    "build": "mkdir -p dist && xcopy /Y /E events dist\\events\\ & xcopy /Y /E indexes dist\\indexes\\"
+  }
+}
